@@ -1,6 +1,6 @@
 ---
-title       : Insert the chapter title here
-description : Insert the chapter description here
+title       : ggplot2
+description : Using ggplot2 for data visualization
 attachments :
   slides_link : https://s3.amazonaws.com/assets.datacamp.com/course/teach/slides_example.pdf
 
@@ -14,6 +14,30 @@ xp: 50
 skills: 1
 key: d03c221239
 ```
+
+In this chapter, we’ll mostly use one data set that’s bundled with ggplot2: mpg. It includes information about the fuel economy of popular car models in 1999 and 2008, collected by the US Environmental Protection Agency, http://fueleconomy.gov. You can access the data by loading ggplot2:
+
+`@pre_exercise_code`
+```{r}
+library(ggplot2) 
+mpg
+```
+
+Every ggplot2 plot has three key components:
+1. data,
+2. A set of aesthetic mappings between variables in the data and visual
+properties, and
+3. At least one layer which describes how to render each observation. Layers
+are usually created with a geom function.
+
+Here’s a simple example:
+`@pre_exercise_code`
+```{r}
+ggplot(mpg, aes(x = displ, y = hwy)) + geom_point()
+```
+
+
+
 
 Have a look at the plot that showed up in the viewer to the right. Which type of movie has the worst rating assigned to it?
 
