@@ -128,3 +128,78 @@ test_error()
 
 success_msg("Good work!")
 ```
+
+---
+## Test Movie
+
+```yaml
+type: NormalExercise
+lang: r
+xp: 50
+skills: 1
+key: d03c221240
+```
+
+This is a test exercise
+
+There are many data sets included with the R distribution. A list of the available data sets can be displayed with the data() command. MASS [50] is one of the recommended packages that is bundled with the base R package, so it should already be installed with R. To use the data sets or functions in MASS one first loads MASS by the command
+
+`@pre_exercise_code`
+```{r}
+library(MASS)  #load the package
+data()         #display available datasets
+```
+
+
+`@instructions`
+- Check out the structure of `movie_selection`.
+- Select movies with a rating of 5 or higher. Assign the result to `good_movies`.
+- Use `head()` to  display the first few observations.
+
+`@hint`
+- Use `head(...)` for the first instruction.
+
+`@pre_exercise_code`
+```{r}
+# You can also prepare your dataset in a specific way in the pre exercise code
+load(url("https://s3.amazonaws.com/assets.datacamp.com/course/teach/movies.RData"))
+movie_selection <- Movies[Movies$Genre %in% c("action", "animated", "comedy"), c("Genre", "Rating", "Run")]
+
+# Clean up the environment
+rm(Movies)
+```
+
+`@sample_code`
+```{r}
+# mammals is available in your workspace
+
+# Print first few rows using head.
+
+```
+
+`@solution`
+```{r}
+# mammals is available in your workspace
+
+# Print first few rows using head.
+head(mammals)
+```
+
+`@sct`
+```{r}
+# SCT written with testwhat: https://github.com/datacamp/testwhat/wiki
+
+test_function("str", args = "object",
+              not_called_msg = "You didn't call `str()`!",
+              incorrect_msg = "You didn't call `str(object = ...)` with the correct argument, `object`.")
+
+test_object("good_movies")
+
+test_function("plot", args = "x")
+test_function("plot", args = "y")
+test_function("plot", args = "col")
+
+test_error()
+
+success_msg("Good work!")
+```
